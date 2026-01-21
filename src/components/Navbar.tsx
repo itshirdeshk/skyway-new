@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +29,9 @@ const Navbar = () => {
             className="flex items-center gap-2"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-primary-foreground font-serif font-bold text-xl">S</span>
+              <span className="text-primary-foreground font-display font-bold text-xl">S</span>
             </div>
-            <span className="font-serif text-2xl font-bold text-primary">Skyway</span>
+            <span className="font-display text-2xl font-bold text-primary">Skyway</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -51,8 +52,9 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Theme Toggle & CTA Button */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <Button
               asChild
               className="btn-primary text-primary-foreground rounded-xl px-6 py-2 font-medium shadow-soft hover:shadow-glow transition-all duration-300"
@@ -62,12 +64,15 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="text-foreground"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
