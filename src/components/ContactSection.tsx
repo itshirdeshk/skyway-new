@@ -10,15 +10,15 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 XXXXX XXXXX",
-    href: "tel:+91XXXXXXXXXX",
+    value: "+91 8941092974",
+    href: "tel:+918941092974",
   },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@skyway.com",
-    href: "mailto:info@skyway.com",
-  },
+  // {
+  //   icon: Mail,
+  //   label: "Email",
+  //   value: "info@skyway.com",
+  //   href: "mailto:info@skyway.com",
+  // },
   {
     icon: MapPin,
     label: "Location",
@@ -35,7 +35,7 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -47,7 +47,7 @@ const ContactSection = () => {
     <section id="contact" className="py-24 relative overflow-hidden" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
+
       <div className="container relative z-10 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -57,15 +57,13 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="inline-block text-secondary font-medium mb-4">
-              Get In Touch
-            </span>
+            <span className="inline-block text-secondary font-medium mb-4">Get In Touch</span>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Ready to <span className="gradient-text">Start Your Journey?</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have questions about our services? We're here to help. 
-              Reach out and let's discuss how we can support your goals.
+              Have questions about our services? We're here to help. Reach out and let's discuss how we can support your
+              goals.
             </p>
           </motion.div>
 
@@ -81,20 +79,16 @@ const ContactSection = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        Your Name
-                      </label>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Your Name</label>
                       <Input
                         type="text"
-                        placeholder="John Doe"
+                        placeholder="Enter your beautiful name"
                         required
                         className="rounded-xl h-12 border-border/50 focus:border-secondary transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        Phone Number
-                      </label>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Phone Number</label>
                       <Input
                         type="tel"
                         placeholder="+91 XXXXX XXXXX"
@@ -103,23 +97,19 @@ const ContactSection = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Email Address
-                    </label>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Email Address</label>
                     <Input
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="Enter your email"
                       required
                       className="rounded-xl h-12 border-border/50 focus:border-secondary transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Service Interested In
-                    </label>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Service Interested In</label>
                     <Input
                       type="text"
                       placeholder="e.g., Admission, Tech Work, WFH, Academic Support"
@@ -128,9 +118,7 @@ const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Your Message
-                    </label>
+                    <label className="text-sm font-medium text-foreground mb-2 block">Your Message</label>
                     <Textarea
                       placeholder="Tell us about your requirements..."
                       rows={4}
@@ -191,22 +179,12 @@ const ContactSection = () => {
                 transition={{ duration: 0.4, delay: 0.7 }}
                 className="glass-card rounded-2xl p-6 bg-gradient-to-br from-primary/10 to-secondary/10"
               >
-                <h4 className="font-serif text-xl font-bold mb-3">
-                  Need Tech Services?
-                </h4>
+                <h4 className="font-serif text-xl font-bold mb-3">Need Tech Services?</h4>
                 <p className="text-muted-foreground mb-4">
                   Visit our dedicated technology portal for web and app development.
                 </p>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full rounded-xl group"
-                >
-                  <a
-                    href="https://tejovah.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                <Button asChild variant="outline" className="w-full rounded-xl group">
+                  <a href="https://tejovah.com" target="_blank" rel="noopener noreferrer">
                     Visit Tejovah.com
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
