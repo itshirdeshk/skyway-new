@@ -22,7 +22,7 @@ export function ThemeToggle() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="absolute"
       >
-        <Sun className="h-5 w-5 text-accent" />
+        <Sun className="h-5 w-5" />
       </motion.div>
       <motion.div
         initial={false}
