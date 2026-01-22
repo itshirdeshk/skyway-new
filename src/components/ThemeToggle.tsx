@@ -11,7 +11,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative h-9 w-9 rounded-full"
+      className="relative h-9 w-9 rounded-full hover:bg-primary/5"
     >
       <motion.div
         initial={false}
@@ -33,7 +33,7 @@ export function ThemeToggle() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="absolute"
       >
-        <Moon className="h-5 w-5 text-secondary" />
+        <Moon className="h-5 w-5 text-primary" />
       </motion.div>
       <span className="sr-only">Toggle theme</span>
     </Button>

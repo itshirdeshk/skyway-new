@@ -28,9 +28,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.02 }}
             className="flex items-center gap-2"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">S</span>
-            </div>
+            <img src="./skyway_logo.png" width={"30px"} height={"30px"}></img>
             <span className="font-display text-2xl font-bold text-primary">Skyway</span>
           </motion.div>
 
