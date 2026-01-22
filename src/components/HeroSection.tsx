@@ -125,15 +125,15 @@ const HeroSection = () => {
           >
             {[
               {
-                value: "500+",
+                value: "100+",
                 label: "Students Placed",
               },
               {
-                value: "50+",
+                value: "20+",
                 label: "Partner Institutions",
               },
               {
-                value: "100+",
+                value: "5+",
                 label: "Projects Delivered",
               },
               {

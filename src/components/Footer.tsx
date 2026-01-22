@@ -18,10 +18,8 @@ const Footer = () => {
               {/* Brand */}
               <div className="md:col-span-2">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <span className="text-primary-foreground font-serif font-bold text-xl">S</span>
-                  </div>
-                  <span className="font-serif text-2xl font-bold text-primary">Skyway</span>
+                  <img src="./skyway_logo.png" width={"30px"} height={"30px"}></img>
+                  <span className="font-display text-2xl font-bold text-primary">Skyway</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed max-w-sm">
                   Your trusted partner for education, technology, employment, 
