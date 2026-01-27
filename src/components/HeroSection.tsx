@@ -67,7 +67,7 @@ const HeroSection = () => {
             }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Your trusted partner for education admissions, technology solutions, work opportunities, and academic
+            Your trusted partner for education admissions, technology solutions, work from home opportunities, and academic
             excellence. We turn your aspirations into achievements.
           </motion.p>
 
@@ -137,8 +137,8 @@ const HeroSection = () => {
                 label: "Projects Delivered",
               },
               {
-                value: "95%",
-                label: "Success Rate",
+                value: "50+",
+                label: "Opportunities Provided",
               },
             ].map((stat, index) => (
               <motion.div
