@@ -201,7 +201,7 @@ const ContactSection = () => {
                 </p>
                 <Button asChild variant="outline" className="w-full rounded-xl group hover:bg-primary/5">
                   <a href="https://tejovah.com" target="_blank" rel="noopener noreferrer">
-                    Visit Tejovah.com
+                    Visit tejovah.com
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
