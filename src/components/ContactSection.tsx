@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Send, Phone, MapPin, ArrowRight, User, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,17 +9,24 @@ import { toast } from "sonner";
 
 const contactInfo = [
   {
+    icon: User,
+    label: "Founder and Co-Founder",
+    value: "Priya Khandelwal and Hirdesh Khandelwal",
+    href: "#contact",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@myskyway.org",
+    href: "mailto:info@myskyway.org",
+  },
+  {
     icon: Phone,
     label: "Phone",
     value: "+91 8941092974",
     href: "tel:+918941092974",
   },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "India",
-    href: "#",
-  },
+
 ];
 
 const ContactSection = () => {

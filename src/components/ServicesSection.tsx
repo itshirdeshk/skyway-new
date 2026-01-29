@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Code2, Briefcase, BookOpen, ArrowUpRight, Globe, Percent, Home, FileText } from "lucide-react";
+import { GraduationCap, Code2, Briefcase, BookOpen, ArrowUpRight, Globe, Percent, Home, FileText, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const services = [{
   icon: GraduationCap,
@@ -37,6 +37,15 @@ const services = [{
   features: ["Dissertation Help", "Thesis Writing", "Research Papers"],
   iconSecondary: FileText,
   highlight: "Expert Support",
+  external: false
+}, {
+  icon: Users,
+  title: "Career Counseling",
+  subtitle: "Professional Guidance",
+  description: "Expert career counseling to help you make informed decisions about your professional future. Personalized guidance for students and professionals.",
+  features: ["Career Planning", "Skill Assessment", "Industry Insights"],
+  iconSecondary: Briefcase,
+  highlight: "1-on-1 Sessions",
   external: false
 }];
 const ServicesSection = () => {
