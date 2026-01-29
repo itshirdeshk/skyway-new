@@ -197,7 +197,7 @@ const ContactSection = () => {
               >
                 <h4 className="font-serif text-xl font-bold mb-3">Need Tech Services?</h4>
                 <p className="text-muted-foreground mb-4">
-                  Visit our dedicated technology portal for web and app development.
+                  Visit our dedicated technology portal for all your technical needs.
                 </p>
                 <Button asChild variant="outline" className="w-full rounded-xl group hover:bg-primary/5">
                   <a href="https://tejovah.com" target="_blank" rel="noopener noreferrer">
