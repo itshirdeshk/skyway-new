@@ -54,7 +54,7 @@ const ServicesSection = () => {
     once: true,
     margin: "-100px"
   });
-  return <section id="services" className="py-24 relative overflow-hidden" ref={ref}>
+  return <section id="services" className="py-10 relative overflow-hidden" ref={ref}>
     {/* Background decoration */}
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent py-[50px] mx-[49px] px-[38px] my-[13px]" />
 

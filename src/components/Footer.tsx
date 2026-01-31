@@ -7,7 +7,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative py-16 overflow-hidden">
+    <footer className="relative py-10 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
       
