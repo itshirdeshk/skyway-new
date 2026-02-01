@@ -1,33 +1,35 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Quote, Star, User } from "lucide-react";
+import { Quote, User } from "lucide-react";
+import kushalImage from "/Kushal.jpeg";
+import shwetaImage from "/Shweta Khandelwal.jpeg";
 
 const testimonials = [
     {
         name: "Kushal Yadav",
         designation: "Business Owner",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+        image: kushalImage,
         review: "Skyway delivered an exceptional website for my business. The design is modern, responsive, and exactly what I envisioned. Their technical expertise and attention to detail made the entire process smooth and professional.",
         rating: 5,
     },
     {
         name: "Shurbhi Agarwal",
         designation: "Engineering Graduate",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop",
+        image: "",
         review: "The career counseling session at Skyway was incredibly insightful. They helped me identify my strengths and guided me toward the right career path. The personalized advice gave me the confidence I needed to pursue my goals.",
         rating: 5,
     },
     {
         name: "Gopal Agarwal",
         designation: "MBA Student",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+        image: "",
         review: "Thanks to Skyway's admission services, I got into a top MBA program with a great scholarship. Their expert guidance and support throughout the application process was invaluable. Highly recommend their services!",
         rating: 5,
     },
     {
         name: "Shweta Khandelwal",
         designation: "Freelance Professional",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
+        image: shwetaImage,
         review: "The work-from-home opportunity provided by Skyway has been life-changing. It's genuine, flexible, and the earnings are consistent. I can now balance my professional and personal life perfectly while earning a stable income.",
         rating: 5,
     },
@@ -86,9 +88,16 @@ const TestimonialsSection = () => {
                                 <div className="flex items-center gap-4">
                                     <div className="relative">
                                         <div className="w-14 h-14 rounded-full overflow-hidden ring-accent/20 group-hover:ring-accent/40 transition-all duration-300">
-                                            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center flex-shrink-0 group-hover:shadow-glow transition-shadow duration-300">
-                                                <User className="w-6 h-6 text-primary-foreground" />
-                                            </div>
+                                            {testimonial.image !== "" ?
+                                                <img
+                                                    src={testimonial.image}
+                                                    alt={testimonial.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                                : <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center flex-shrink-0 group-hover:shadow-glow transition-shadow duration-300">
+                                                    <User className="w-6 h-6 text-primary-foreground" />
+                                                </div>
+                                            }
                                         </div>
                                         {/* Verified Badge */}
                                         <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full flex items-center justify-center ring-2 ring-background">
