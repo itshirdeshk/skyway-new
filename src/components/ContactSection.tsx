@@ -41,7 +41,7 @@ const ContactSection = () => {
 
     if (formRef.current) {
       emailjs
-        .sendForm('service_p2sscsx', 'template_bdja9m8', formRef.current, { publicKey: "r9hWl1Umnf8ICtDLk" })
+        .sendForm('service_nrldwav', 'template_j9zo71t', formRef.current, { publicKey: "r9hWl1Umnf8ICtDLk" })
         .then(() => {
           formRef.current?.reset();
           toast.success("Message sent successfully!");
