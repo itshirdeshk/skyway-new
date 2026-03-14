@@ -18,7 +18,7 @@ const Footer = () => {
               {/* Brand */}
               <div className="md:col-span-2">
                 <div className="flex items-center gap-2 mb-4">
-                  <img src="./skyway_logo.png" width={"30px"} height={"30px"}></img>
+                  <img src="/skyway_logo.png" width={"30px"} height={"30px"}></img>
                   <span className="font-display text-2xl font-bold text-primary">Skyway</span>
                 </div>
                 <p className="text-muted-foreground leading-relaxed max-w-sm">

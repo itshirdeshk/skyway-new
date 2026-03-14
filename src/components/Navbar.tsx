@@ -28,7 +28,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.02 }}
             className="flex items-center gap-2"
           >
-            <img src="./skyway_logo.png" width={"30px"} height={"30px"}></img>
+            <img src="/skyway_logo.png" width={"30px"} height={"30px"}></img>
             <span className="font-display text-2xl font-bold text-primary">Skyway</span>
           </motion.div>
 

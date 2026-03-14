@@ -1,53 +1,22 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { type ComponentType, useRef } from "react";
+import { Link } from "react-router-dom";
 import { GraduationCap, Code2, Briefcase, BookOpen, ArrowUpRight, Globe, Percent, Home, FileText, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-const services = [{
-  icon: GraduationCap,
-  title: "Admission Services",
-  subtitle: "India & International",
-  description: "Get admitted to top universities across India and internationally with special discounts. Expert guidance for your educational journey.",
-  features: ["Special Discounts", "Pan-India Coverage", "International Universities"],
-  iconSecondary: Globe,
-  highlight: "Up to 30% Off",
-  external: false
-}, {
-  icon: Code2,
-  title: "Tech Solutions",
-  subtitle: "Digital Excellence",
-  description: "Complete technology solutions including website development, app development, and digital transformation services.",
-  features: ["Web Development", "CRM Development", "Digital Solutions"],
-  iconSecondary: Percent,
-  highlight: "Premium Quality",
-  external: true
-}, {
-  icon: Briefcase,
-  title: "Work From Home",
-  subtitle: "Flexible Opportunities",
-  description: "Genuine work-from-home opportunities for those seeking flexible income. Earn ₹15,000 - ₹20,000 per month with our verified programs.",
-  features: ["Flexible Hours", "Verified Programs", "Regular Payouts"],
-  iconSecondary: Home,
-  highlight: "₹15K-20K/Month",
-  external: false
-}, {
-  icon: BookOpen,
-  title: "Academic Services",
-  subtitle: "Research Excellence",
-  description: "Professional assistance for dissertations, thesis writing, research papers, and project work. Expert academic support you can trust.",
-  features: ["Dissertation Help", "Thesis Writing", "Research Papers"],
-  iconSecondary: FileText,
-  highlight: "Expert Support",
-  external: false
-}, {
-  icon: Users,
-  title: "Career Counseling",
-  subtitle: "Professional Guidance",
-  description: "Expert career counseling to help you make informed decisions about your professional future. Personalized guidance for students and professionals.",
-  features: ["Career Planning", "Skill Assessment", "Industry Insights"],
-  iconSecondary: Briefcase,
-  highlight: "1-on-1 Sessions",
-  external: false
-}];
+import { SERVICES, type ServiceIconKey } from "@/data/services";
+import UniversityLogoSlider from "@/components/UniversityLogoSlider";
+
+const iconMap: Record<ServiceIconKey, ComponentType<{ className?: string }>> = {
+  graduationCap: GraduationCap,
+  code2: Code2,
+  briefcase: Briefcase,
+  bookOpen: BookOpen,
+  users: Users,
+  globe: Globe,
+  percent: Percent,
+  home: Home,
+  fileText: FileText
+};
+
 const ServicesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -84,7 +53,10 @@ const ServicesSection = () => {
 
       {/* Services Grid */}
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {services.map((service, index) => <motion.div key={service.title} initial={{
+        {SERVICES.map((service, index) => {
+          const Icon = iconMap[service.iconKey];
+
+          return <motion.div key={service.title} initial={{
           opacity: 0,
           y: 40
         }} animate={isInView ? {
@@ -94,47 +66,58 @@ const ServicesSection = () => {
           duration: 0.6,
           delay: index * 0.1
         }}>
-          <motion.div whileHover={{
-            y: -8,
-            scale: 1.01
-          }} transition={{
-            duration: 0.3
-          }} className="service-card glass-card rounded-3xl p-8 h-full group cursor-pointer">
-            {/* Header */}
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-soft group-hover:shadow-glow transition-shadow duration-300">
-                  <service.icon className="w-7 h-7 text-primary-foreground" />
+          <Link to={`/services/${service.slug}`} className="block h-full">
+            <motion.div whileHover={{
+              y: -8,
+              scale: 1.01
+            }} transition={{
+              duration: 0.3
+            }} className="service-card glass-card rounded-3xl p-8 h-full group cursor-pointer">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-soft group-hover:shadow-glow transition-shadow duration-300">
+                    <Icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-foreground">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {service.subtitle}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-foreground">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {service.subtitle}
-                  </p>
-                </div>
+                <span className="inline-flex items-center gap-1 bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">
+                  {service.highlight}
+                </span>
               </div>
-              <span className="inline-flex items-center gap-1 bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">
-                {service.highlight}
-              </span>
-            </div>
 
-            {/* Description */}
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              {service.description}
-            </p>
+              {/* Description */}
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                {service.description}
+              </p>
 
-            {/* Features */}
-            <div className="flex flex-wrap gap-2">
-              {service.features.map(feature => <span key={feature} className="px-3 py-1.5 bg-muted rounded-lg text-sm text-foreground/80">
-                {feature}
-              </span>)}
-            </div>
-          </motion.div>
-        </motion.div>)}
+              {/* Features */}
+              <div className="flex flex-wrap gap-2 mb-7">
+                {service.cardFeatures.map(feature => <span key={feature} className="px-3 py-1.5 bg-muted rounded-lg text-sm text-foreground/80">
+                  {feature}
+                </span>)}
+              </div>
+
+              <div className="flex items-center justify-end text-sm font-semibold text-primary">
+                <span>View detailed services</span>
+                <ArrowUpRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </motion.div>
+          </Link>
+        </motion.div>;
+        })}
       </div>
+
+      {/* <UniversityLogoSlider /> */}
     </div>
   </section>;
 };
+
 export default ServicesSection;
