@@ -8,12 +8,12 @@ import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
 
 const contactInfo = [
-  {
-    icon: User,
-    label: "Founder and Co-Founder",
-    value: "Priya Khandelwal and Hirdesh Khandelwal",
-    href: "#contact",
-  },
+  // {
+  //   icon: User,
+  //   label: "Founder and Co-Founder",
+  //   value: "Priya Khandelwal and Hirdesh Khandelwal",
+  //   href: "#contact",
+  // },
   {
     icon: Mail,
     label: "Email",
@@ -217,12 +217,22 @@ const ContactSection = () => {
                 <p className="text-muted-foreground mb-4">
                   Visit our dedicated technology portal for all your technical needs.
                 </p>
-                <Button asChild variant="outline" className="btn-outline-shimmer magnetic w-full rounded-xl group hover:bg-primary/5">
-                  <a href="https://tejovah.com" target="_blank" rel="noopener noreferrer">
-                    Visit tejovah.com
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
+                <motion.a
+                  href="https://tejovah.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="interactive"
+                  whileHover={{ x: 4 }}
+                  className="btn-outline-shimmer magnetic flex items-center justify-center w-full rounded-xl h-12 text-base font-medium border text-foreground hover:bg-primary/5 transition-colors duration-300 group"
+                >
+                  Visit tejovah.com
+                  <motion.span
+                    className="ml-2 w-4 h-4"
+                    whileHover={{ x: 2 }}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.span>
+                </motion.a>
               </motion.div>
             </motion.div>
           </div>
