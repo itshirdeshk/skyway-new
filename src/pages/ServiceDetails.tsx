@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import UniversityLogoSlider from "@/components/UniversityLogoSlider";
 import { SERVICES_BY_SLUG, type ServiceIconKey, type ServiceSlug } from "@/data/services";
 import { ArrowLeft, ArrowUpRight, BookOpen, Briefcase, Code2, FileText, Globe, GraduationCap, Home, Percent, Users } from "lucide-react";
-import { type ComponentType } from "react";
+import { type ComponentType, type MouseEvent } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 
 const iconMap: Record<ServiceIconKey, ComponentType<{ className?: string }>> = {
@@ -22,6 +22,15 @@ const ServiceDetails = () => {
   const service = slug ? SERVICES_BY_SLUG[slug as ServiceSlug] : undefined;
   const isAdmissionService = service?.slug === "admission-services";
 
+  const handleSpotlightMove = (event: MouseEvent<HTMLElement>) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty("--spot-x", `${x}%`);
+    card.style.setProperty("--spot-y", `${y}%`);
+  };
+
   if (!service) {
     return <Navigate to="/404" replace />;
   }
@@ -35,7 +44,10 @@ const ServiceDetails = () => {
 
       <section className="relative z-10 pt-10 pb-14 px-4">
         <div className="container max-w-6xl">
-          <div className="glass-card rounded-3xl px-5 py-4 md:px-8 md:py-5 mb-8 flex flex-wrap items-center justify-between gap-4">
+          <div
+            onMouseMove={handleSpotlightMove}
+            className="glass-card hover-card-spotlight rounded-3xl px-5 py-4 md:px-8 md:py-5 mb-8 flex flex-wrap items-center justify-between gap-4"
+          >
             <Link
               to="/#services"
               className="inline-flex items-center gap-2 rounded-xl border border-border/70 px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
@@ -53,7 +65,7 @@ const ServiceDetails = () => {
             </Link>
           </div>
 
-          <div className="glass-card rounded-3xl p-8 md:p-12 mb-8">
+          <div onMouseMove={handleSpotlightMove} className="glass-card hover-card-spotlight rounded-3xl p-8 md:p-12 mb-8">
             <div className="flex flex-wrap items-start justify-between gap-5 mb-8">
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-soft">
@@ -85,7 +97,11 @@ const ServiceDetails = () => {
 
           <div className="grid gap-6 md:grid-cols-2">
             {service.detailSections.map((section, index) => (
-              <article key={section.title} className="glass-card rounded-2xl p-6">
+              <article
+                key={section.title}
+                onMouseMove={handleSpotlightMove}
+                className="glass-card hover-card-spotlight rounded-2xl p-6"
+              >
                 <div className="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-secondary/10 text-secondary text-sm font-bold">
                   {index + 1}
                 </div>

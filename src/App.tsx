@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ServiceDetails from "./pages/ServiceDetails";
 import WhatsAppButton from "./components/WhatsAppButton";
 import CustomCursor from "./components/CustomCursor";
+import ScrollToHash from "./components/ScrollToHash";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToHash />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services/:slug" element={<ServiceDetails />} />

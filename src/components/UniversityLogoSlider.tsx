@@ -25,7 +25,7 @@ const UniversityLogoSlider = () => {
           Trusted By Leading <span className="gradient-text">University Partners</span>
         </h3>
         <p className="text-muted-foreground">
-          Hover over a logo to see the university name. Click to visit the official website.
+          Hover over a logo to see the university name.
         </p>
       </div>
 
@@ -37,7 +37,7 @@ const UniversityLogoSlider = () => {
           {marqueeItems.map((university, index) => (
             <a
               key={`${university.name}-${index}`}
-              href={university.website}
+              // href={university.website}
               target="_blank"
               rel="noreferrer"
               className="group relative flex h-24 w-40 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-background/80 px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-soft"
@@ -66,7 +66,7 @@ const UniversityLogoSlider = () => {
 
               <div className="pointer-events-none absolute -bottom-10 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-lg bg-primary px-3 py-1 text-xs text-primary-foreground opacity-0 shadow-md transition-all duration-200 group-hover:-bottom-6 group-hover:opacity-100">
                 <span className="whitespace-nowrap">{university.name}</span>
-                <ExternalLink className="h-3 w-3" />
+                {/* <ExternalLink className="h-3 w-3" /> */}
               </div>
             </a>
           ))}

@@ -44,7 +44,7 @@ const Footer = () => {
                   {["Home", "Services", "About", "Contact"].map((link) => (
                     <li key={link}>
                       <a
-                        href={`#${link.toLowerCase()}`}
+                        href={`/#${link.toLowerCase()}`}
                         className="text-muted-foreground hover:text-secondary transition-colors magnetic inline-flex"
                       >
                         {link}
@@ -66,7 +66,7 @@ const Footer = () => {
                   ].map((service) => (
                     <li key={service}>
                       <a
-                        href="#services"
+                        href="/#services"
                         className="text-muted-foreground hover:text-secondary transition-colors magnetic inline-flex"
                       >
                         {service}

@@ -8,7 +8,7 @@ export const UNIVERSITY_PARTNERS: UniversityPartner[] = [
   {
     name: "Amity University",
     website: "https://www.amity.edu",
-    logoUrl: "https://www.amity.edu/images/logo.png"
+    logoUrl: "https://vectorseek.com/wp-content/uploads/2023/08/Amity-University-Logo-Vector.svg-.png"
   },
   {
     name: "Lovely Professional University",
@@ -18,7 +18,7 @@ export const UNIVERSITY_PARTNERS: UniversityPartner[] = [
   {
     name: "Chandigarh University",
     website: "https://www.cuchd.in",
-    logoUrl: "https://www.cuchd.in/includes/assets/images/header-footer/cu-logo-white.webp"
+    logoUrl: "https://vectorseek.com/wp-content/uploads/2023/09/Chandigarh-University-CU-Logo-Vector.svg-.png"
   },
   {
     name: "Sikkim Manipal University",
@@ -33,26 +33,26 @@ export const UNIVERSITY_PARTNERS: UniversityPartner[] = [
   {
     name: "University of Petroleum and Energy Studies",
     website: "https://www.upes.ac.in",
-    logoUrl: "https://logo.clearbit.com/upes.ac.in"
+    logoUrl: "https://www.runwayincubator.com/media/jtrfi0le/upes_logo-size-1-uni.png"
   },
   {
     name: "DY Patil University Pune",
     website: "https://dypatil.edu",
-    logoUrl: "https://logo.clearbit.com/dypatil.edu"
+    logoUrl: "https://dypatil-edu-cms.s3.ap-south-1.amazonaws.com/static-images/icons/logo.svg"
   },
   {
     name: "Jain University",
     website: "https://www.jainuniversity.ac.in",
-    logoUrl: "https://logo.clearbit.com/jainuniversity.ac.in"
+    logoUrl: "https://www.jainuniversity.ac.in/jain/home/assets/images/jain-logo.png"
   },
   {
     name: "Vignan University",
     website: "https://vignan.ac.in",
-    logoUrl: "https://logo.clearbit.com/vignan.ac.in"
+    logoUrl: "https://vignan.ac.in/newvignan/assets/images/Logo%20with%20Deemed.svg"
   },
   {
     name: "Sharda University",
     website: "https://www.sharda.ac.in",
-    logoUrl: "https://logo.clearbit.com/sharda.ac.in"
+    logoUrl: "https://vectorseek.com/wp-content/uploads/2023/09/Sharda-University-Logo-Vector.svg-.png"
   }
 ];
