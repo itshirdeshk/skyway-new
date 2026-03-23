@@ -1,11 +1,20 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import LiquidBlobs from "./LiquidBlobs";
+import Aurora from "./Aurora";
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-      <LiquidBlobs />
+      <div className="absolute inset-0 pointer-events-none opacity-50">
+        <Aurora
+          colorStops={["#123A72", "#2EA6B4", "#F0B548"]}
+          speed={0.75}
+          blend={0.58}
+          amplitude={0.9}
+        />
+      </div>
+
+
 
       <div className="container relative z-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -90,7 +99,7 @@ const HeroSection = () => {
             <Button
               asChild
               size="lg"
-              className="btn-primary text-primary-foreground rounded-2xl px-8 py-6 text-lg font-medium shadow-lifted hover:shadow-glow transition-all duration-300 group"
+              className="btn-primary magnetic text-primary-foreground rounded-2xl px-8 py-6 text-lg font-medium shadow-lifted hover:shadow-glow transition-all duration-300 group"
             >
               <a href="#services">
                 Explore Services
@@ -101,7 +110,7 @@ const HeroSection = () => {
               asChild
               variant="outline"
               size="lg"
-              className="rounded-2xl px-8 py-6 text-lg font-medium border-2 hover:bg-primary/5 transition-all duration-300"
+              className="btn-outline-shimmer magnetic rounded-2xl px-8 py-6 text-lg font-medium border-2 hover:bg-primary/5 transition-all duration-300"
             >
               <a href="#contact">Contact Us</a>
             </Button>
@@ -144,10 +153,10 @@ const HeroSection = () => {
               <motion.div
                 key={stat.label}
                 whileHover={{
-                  y: -5,
-                  scale: 1.02,
+                  y: -8,
+                  scale: 1.03,
                 }}
-                className="glass-card rounded-2xl p-6 text-center"
+                className="glass-card hover-card-spotlight rounded-2xl p-6 text-center"
               >
                 <div className="text-3xl md:text-4xl font-serif font-bold gradient-text mb-2">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>

@@ -1,9 +1,19 @@
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import { type MouseEvent } from "react";
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSpotlightMove = (event: MouseEvent<HTMLDivElement>) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty("--spot-x", `${x}%`);
+    card.style.setProperty("--spot-y", `${y}%`);
   };
 
   return (
@@ -13,7 +23,7 @@ const Footer = () => {
       
       <div className="container relative z-10 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="glass-card rounded-3xl p-8 md:p-12">
+          <div onMouseMove={handleSpotlightMove} className="glass-card hover-card-spotlight rounded-3xl p-8 md:p-12">
             <div className="grid md:grid-cols-4 gap-8">
               {/* Brand */}
               <div className="md:col-span-2">
@@ -35,7 +45,7 @@ const Footer = () => {
                     <li key={link}>
                       <a
                         href={`#${link.toLowerCase()}`}
-                        className="text-muted-foreground hover:text-secondary transition-colors"
+                        className="text-muted-foreground hover:text-secondary transition-colors magnetic inline-flex"
                       >
                         {link}
                       </a>
@@ -57,7 +67,7 @@ const Footer = () => {
                     <li key={service}>
                       <a
                         href="#services"
-                        className="text-muted-foreground hover:text-secondary transition-colors"
+                        className="text-muted-foreground hover:text-secondary transition-colors magnetic inline-flex"
                       >
                         {service}
                       </a>
@@ -80,7 +90,7 @@ const Footer = () => {
                 onClick={scrollToTop}
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-primary-foreground shadow-soft hover:shadow-glow transition-shadow"
+                className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-primary-foreground shadow-soft hover:shadow-glow transition-shadow magnetic"
               >
                 <ArrowUp className="w-5 h-5" />
               </motion.button>

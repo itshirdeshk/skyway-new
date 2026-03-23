@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { type MouseEvent, useRef } from "react";
 import { Quote, User } from "lucide-react";
 import kushalImage from "/Kushal.jpeg";
 import shwetaImage from "/Shweta Khandelwal.jpeg";
@@ -39,6 +39,15 @@ const TestimonialsSection = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+    const handleSpotlightMove = (event: MouseEvent<HTMLDivElement>) => {
+        const card = event.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty("--spot-x", `${x}%`);
+        card.style.setProperty("--spot-y", `${y}%`);
+    };
+
     return (
         <section id="testimonials" className="py-10 relative overflow-hidden" ref={ref}>
             {/* Background Gradient */}
@@ -71,9 +80,10 @@ const TestimonialsSection = () => {
                             initial={{ opacity: 0, y: 40 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
+                            whileHover={{ y: -8 }}
                             className="group"
                         >
-                            <div className="glass-card p-8 h-full flex flex-col relative overflow-hidden hover:shadow-2xl transition-all duration-300 border border-border/50 rounded-xl">
+                            <div onMouseMove={handleSpotlightMove} data-cursor="interactive" className="glass-card hover-card-spotlight p-8 h-full flex flex-col relative overflow-hidden hover:shadow-2xl transition-all duration-300 border border-border/50 rounded-xl">
                                 {/* Quote Icon */}
                                 <div className="absolute -top-2 -right-2 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
                                     <Quote className="w-24 h-24 text-accent" />

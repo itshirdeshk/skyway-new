@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { type MouseEvent, useRef } from "react";
 import { CheckCircle2, Award, Users, Target } from "lucide-react";
 
 const features = [
@@ -32,6 +32,15 @@ const highlights = [
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const handleSpotlightMove = (event: MouseEvent<HTMLDivElement>) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty("--spot-x", `${x}%`);
+    card.style.setProperty("--spot-y", `${y}%`);
+  };
 
   return (
     <section id="about" className="py-10 relative overflow-hidden" ref={ref}>
@@ -86,8 +95,10 @@ const AboutSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                whileHover={{ x: 8 }}
-                className="glass-card rounded-2xl p-6 flex items-start gap-5 group cursor-pointer"
+                whileHover={{ x: 8, y: -2 }}
+                onMouseMove={handleSpotlightMove}
+                data-cursor="interactive"
+                className="glass-card hover-card-spotlight rounded-2xl p-6 flex items-start gap-5 group cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center flex-shrink-0 group-hover:shadow-glow transition-shadow duration-300">
                   <feature.icon className="w-6 h-6 text-primary-foreground" />

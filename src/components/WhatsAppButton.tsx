@@ -16,15 +16,16 @@ const WhatsAppButton = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 z-50 group"
+            className="fixed bottom-6 right-6 z-50 group magnetic"
             aria-label="Chat on WhatsApp"
+            data-cursor="interactive"
         >
             <div className="relative">
                 {/* Ping Animation */}
                 <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75" />
                 
                 {/* Button */}
-                <div className="relative flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                <div className="relative flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-green-400/40">
                     <MessageCircle className="w-7 h-7 text-white" strokeWidth={2} />
                 </div>
 

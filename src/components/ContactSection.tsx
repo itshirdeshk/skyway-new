@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { type MouseEvent, useRef, useState } from "react";
 import { Send, Phone, MapPin, ArrowRight, User, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,6 +34,15 @@ const ContactSection = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSpotlightMove = (event: MouseEvent<HTMLDivElement>) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty("--spot-x", `${x}%`);
+    card.style.setProperty("--spot-y", `${y}%`);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,7 +95,7 @@ const ContactSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-3"
             >
-              <div className="glass-card rounded-3xl p-8 md:p-10">
+              <div onMouseMove={handleSpotlightMove} className="glass-card hover-card-spotlight rounded-3xl p-8 md:p-10">
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
@@ -146,7 +155,7 @@ const ContactSection = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full text-primary-foreground rounded-xl h-12 text-lg font-medium shadow-soft hover:shadow-glow transition-all duration-300 group"
+                    className="btn-primary magnetic w-full text-primary-foreground rounded-xl h-12 text-lg font-medium shadow-soft hover:shadow-glow transition-all duration-300 group"
                   >
                     {isSubmitting ? (
                       "Sending..."
@@ -176,7 +185,16 @@ const ContactSection = () => {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                   whileHover={{ x: 8 }}
-                  className="glass-card rounded-2xl p-6 flex items-center gap-5 group cursor-pointer"
+                  onMouseMove={(event) => {
+                    const card = event.currentTarget;
+                    const rect = card.getBoundingClientRect();
+                    const x = ((event.clientX - rect.left) / rect.width) * 100;
+                    const y = ((event.clientY - rect.top) / rect.height) * 100;
+                    card.style.setProperty("--spot-x", `${x}%`);
+                    card.style.setProperty("--spot-y", `${y}%`);
+                  }}
+                  data-cursor="interactive"
+                  className="glass-card hover-card-spotlight rounded-2xl p-6 flex items-center gap-5 group cursor-pointer"
                 >
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center flex-shrink-0 group-hover:shadow-glow transition-shadow duration-300">
                     <info.icon className="w-6 h-6 text-primary-foreground" />
@@ -199,7 +217,7 @@ const ContactSection = () => {
                 <p className="text-muted-foreground mb-4">
                   Visit our dedicated technology portal for all your technical needs.
                 </p>
-                <Button asChild variant="outline" className="w-full rounded-xl group hover:bg-primary/5">
+                <Button asChild variant="outline" className="btn-outline-shimmer magnetic w-full rounded-xl group hover:bg-primary/5">
                   <a href="https://tejovah.com" target="_blank" rel="noopener noreferrer">
                     Visit tejovah.com
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

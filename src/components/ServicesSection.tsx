@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { type ComponentType, useRef } from "react";
+import { type ComponentType, type MouseEvent, useRef } from "react";
 import { Link } from "react-router-dom";
 import { GraduationCap, Code2, Briefcase, BookOpen, ArrowUpRight, Globe, Percent, Home, FileText, Users } from "lucide-react";
 import { SERVICES, type ServiceIconKey } from "@/data/services";
@@ -23,6 +23,16 @@ const ServicesSection = () => {
     once: true,
     margin: "-100px"
   });
+
+  const handleSpotlightMove = (event: MouseEvent<HTMLDivElement>) => {
+    const card = event.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty("--spot-x", `${x}%`);
+    card.style.setProperty("--spot-y", `${y}%`);
+  };
+
   return <section id="services" className="py-10 relative overflow-hidden" ref={ref}>
     {/* Background decoration */}
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent py-[50px] mx-[49px] px-[38px] my-[13px]" />
@@ -68,11 +78,13 @@ const ServicesSection = () => {
         }}>
           <Link to={`/services/${service.slug}`} className="block h-full">
             <motion.div whileHover={{
-              y: -8,
-              scale: 1.01
+              y: -10,
+              scale: 1.02,
+              rotateX: 1,
+              rotateY: -1
             }} transition={{
-              duration: 0.3
-            }} className="service-card glass-card rounded-3xl p-8 h-full group cursor-pointer">
+              duration: 0.28
+            }} onMouseMove={handleSpotlightMove} data-cursor="interactive" className="service-card hover-card-spotlight glass-card rounded-3xl p-8 h-full group cursor-pointer">
               {/* Header */}
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
@@ -88,7 +100,7 @@ const ServicesSection = () => {
                     </p>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1 bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium">
+                <span className="inline-flex items-center gap-1 bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium magnetic">
                   {service.highlight}
                 </span>
               </div>
